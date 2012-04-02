@@ -6,6 +6,10 @@ function love.load()
     --loadChar('/characters/player.lua')
     player = {
         img = love.graphics.newImage('/imgs/doc.png'),
+        imgL = love.graphics.newImage('/imgs/doc.png'),
+        imgR = love.graphics.newImage('/imgs/docR.png'),
+        imgD = love.graphics.newImage('/imgs/docD.png'),
+        imgU = love.graphics.newImage('/imgs/docU.png'),
         grid_x = 256,
         grid_y = 256,
         act_x = 200,
@@ -28,12 +32,16 @@ end
 function love.keypressed(key)
     if love.keyboard.isDown("down") then
         player.grid_y = player.grid_y + 32
+        player.img = player.imgD
     elseif key == "up" then
         player.grid_y = player.grid_y - 32
+        player.img = player.imgU
     elseif key == "left" then
         player.grid_x = player.grid_x - 32
+        player.img = player.imgL
     elseif key == "right" then
         player.grid_x = player.grid_x + 32
+        player.img = player.imgR
     end
 end
 
