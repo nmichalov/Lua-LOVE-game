@@ -1,10 +1,11 @@
 require 'map-functions'
 require 'character-functions'
 
-local mapTable
+local mapTable, spot
 
 function love.load()
     loadMap('/maps/countryArena.lua')
+    --loadMap('/maps/riverMap.lua')
     player = {
         img = love.graphics.newImage('/imgs/doc.png'),
         imgL = love.graphics.newImage('/imgs/doc.png'),
@@ -56,10 +57,12 @@ function love.keypressed(key)
 end
 
 function testMap(x,y)
-    local spot = mapTable[(player.grid_x / 32) + x][(player.grid_y / 32) + y]
+    spot = mapTable[(player.grid_x / 32) + x][(player.grid_y / 32) + y]
     print(spot)
     if spot == '#' or spot == '^' then
         return false
     end
     return true
 end
+
+
