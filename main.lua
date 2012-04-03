@@ -32,24 +32,24 @@ end
 
 function love.keypressed(key)
     if love.keyboard.isDown("down") then
+        player.img = player.imgD
         if testMap(0, 2) then
             player.grid_y = player.grid_y + 32
-            player.img = player.imgD
         end
     elseif key == "up" then
+        player.img = player.imgU
         if testMap(0, 0) then
             player.grid_y = player.grid_y - 32
-            player.img = player.imgU
         end
     elseif key == "left" then
+        player.img = player.imgL
         if testMap(-1, 1) then
             player.grid_x = player.grid_x - 32
-            player.img = player.imgL
         end
     elseif key == "right" then
+        player.img = player.imgR
         if testMap(1, 1) then
             player.grid_x = player.grid_x + 32
-            player.img = player.imgR
         end
     end
     print(player.grid_x, player.grid_y, player.grid_x/32, player.grid_y/32)
