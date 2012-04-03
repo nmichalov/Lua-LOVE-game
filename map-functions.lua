@@ -1,6 +1,5 @@
 local tileW, tileH, tileSet, quads, tileTable
 
-
 function loadMap(path)
     love.filesystem.load(path)()
 end
@@ -45,5 +44,5 @@ function drawMap()
             love.graphics.drawq(tileSet, quads[char], x, y)
         end
     end
+    return tileTable
 end
-
