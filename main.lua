@@ -12,6 +12,7 @@ function love.load()
         imgR = love.graphics.newImage('/imgs/docR.png'),
         imgD = love.graphics.newImage('/imgs/docD.png'),
         imgU = love.graphics.newImage('/imgs/docU.png'),
+        power = love.graphics.newImage('/imgs/powerUp.png'),
         grid_x = 256,
         grid_y = 256,
         act_x = 200,
@@ -61,6 +62,9 @@ function testMap(x,y)
     print(spot)
     if spot == '#' or spot == '^' then
         return false
+    end
+    if spot == '*' then
+        player.img = player.power
     end
     return true
 end
