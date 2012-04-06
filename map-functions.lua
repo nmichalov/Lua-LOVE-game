@@ -1,20 +1,26 @@
-local tileW, tileH, tileSet, quads, tileTable
+local tileW, tileH, tileSet, quads, tileTable, entityInfo, entities
 
 function loadMap(path)
     love.filesystem.load(path)()
 end
 
 
-function newMap(tileWidth, tileHeight, tileSetPath, tileString, quadInfo)
+function newMap(tileWidth, tileHeight, tileSetPath, tileString, quadInfo, entInfo, entList)
     tileW = tileWidth
     tileH = tileHeight
     tileSet = love.graphics.newImage(tileSetPath)
+    entities = entList
+    entityInfo = entInfo
 
     local tileSetW, tileSetH = tileSet:getWidth(), tileSet:getHeight()
 
     quads = {}
 
     for _,info in ipairs(quadInfo) do
+        quads[info[1]] = love.graphics.newQuad(info[2], info[3], tileW, tileH, tileSetW, tileSetH)
+    end
+
+    for _,info in ipairs(entityInfo) do
         quads[info[1]] = love.graphics.newQuad(info[2], info[3], tileW, tileH, tileSetW, tileSetH)
     end
 
@@ -36,6 +42,11 @@ function newMap(tileWidth, tileHeight, tileSetPath, tileString, quadInfo)
     end
 end
     
+
+function map2world(mx, my)
+    return (mx-1)*tileW, (my-1)*tileH
+end
+
     
 function drawMap()
     for columnIndex,column in ipairs(tileTable) do
@@ -43,6 +54,11 @@ function drawMap()
             local x,y = (columnIndex-1)*tileW, (rowIndex-1)*tileH
             love.graphics.drawq(tileSet, quads[char], x, y)
         end
+    end
+    --draw entities
+    for i,entity in ipairs(entities) do
+        local name, x, y = entity[1], map2world(entity[2], entity[3])
+        love.graphics.drawq(tileSet, quads[name], x, y)
     end
     return tileTable
 end

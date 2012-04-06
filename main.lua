@@ -4,8 +4,9 @@ require 'character-functions'
 local mapTable, spot, player, fireball
 
 function love.load()
-    loadMap('/maps/countryArena.lua')
+    --loadMap('/maps/countryArena.lua')
     --loadMap('/maps/riverMap.lua')
+    loadMap('/maps/inn.lua')
     player = {
         img = love.graphics.newImage('/imgs/doc.png'),
         imgL = love.graphics.newImage('/imgs/doc.png'),
