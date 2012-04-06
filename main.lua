@@ -1,7 +1,7 @@
 require 'map-functions'
 require 'character-functions'
 
-local mapTable, spot
+local mapTable, spot, player, fireball
 
 function love.load()
     loadMap('/maps/countryArena.lua')
@@ -19,6 +19,7 @@ function love.load()
         act_y = 200,
         speed = 10
     }
+    fireball = love.graphics.newImage('/imgs/explosion.png')
 end
 
 function love.update(dt)
@@ -33,7 +34,7 @@ end
 
 
 function love.keypressed(key)
-    if love.keyboard.isDown("down") then
+    if key == "down" then
         player.img = player.imgD
         if testMap(0, 2) then
             player.grid_y = player.grid_y + 32
@@ -53,6 +54,18 @@ function love.keypressed(key)
         if testMap(1, 1) then
             player.grid_x = player.grid_x + 32
         end
+    elseif key == "return" then
+        local fx, fy = player.act_x, player.act_y
+        if player.img == player.imgU then
+            fy = fy - 64
+        elseif player.img == player.imgL then
+            fx = fx - 64
+        elseif player.img == player.imgR then
+            fx = fx + 64
+        elseif player.img == player.img then
+            fy = fy + 64
+        end
+        love.graphics.draw(fireball, fx, fy, 1, 1)
     end
     print(player.grid_x, player.grid_y, player.grid_x/32, player.grid_y/32)
 end
