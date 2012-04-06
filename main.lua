@@ -34,28 +34,28 @@ function love.draw()
 end
 
 
-function love.keypressed(key)
-    if key == "down" then
+function love.keypressed()
+    if love.keyboard.isDown("down") then
         player.img = player.imgD
         if testMap(0, 2) then
             player.grid_y = player.grid_y + 32
         end
-    elseif key == "up" then
+    elseif love.keyboard.isDown("up") then
         player.img = player.imgU
         if testMap(0, 0) then
             player.grid_y = player.grid_y - 32
         end
-    elseif key == "left" then
+    elseif love.keyboard.isDown("left") then
         player.img = player.imgL
         if testMap(-1, 1) then
             player.grid_x = player.grid_x - 32
         end
-    elseif key == "right" then
+    elseif love.keyboard.isDown("right") then
         player.img = player.imgR
         if testMap(1, 1) then
             player.grid_x = player.grid_x + 32
         end
-    elseif key == "return" then
+    elseif love.keyboard.isDown(" ") then
         local fx, fy = player.act_x, player.act_y
         if player.img == player.imgU then
             fy = fy - 64
@@ -70,6 +70,7 @@ function love.keypressed(key)
     end
     print(player.grid_x, player.grid_y, player.grid_x/32, player.grid_y/32)
 end
+
 
 function testMap(x,y)
     spot = mapTable[(player.grid_x / 32) + x][(player.grid_y / 32) + y]
