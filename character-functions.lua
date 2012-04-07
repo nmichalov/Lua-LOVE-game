@@ -46,18 +46,18 @@ function keypress()
         local fx, fy = player.act_x, player.act_y
         if player.img == player.imgU then
             fy = fy - 160 
-            fx = fx -  16 
+            fx = fx -  32 
         elseif player.img == player.imgL then
             fx = fx - 128 
             fy = fy -  64 
         elseif player.img == player.imgR then
-            fx = fx + 128
+            fx = fx +  96
             fy = fy -  64
         elseif player.img == player.imgD then
             fy = fy +  64 
-            fx = fx -  16
+            fx = fx -  32 
         end
-        love.graphics.draw(fireball, fx, fy, 1, 1)
+        anim:draw(fx, fy)
     end
     print(player.grid_x, player.grid_y, player.grid_x / 32, player.grid_y / 32)
 end

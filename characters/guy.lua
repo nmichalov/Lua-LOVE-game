@@ -1,3 +1,5 @@
+
+
 --local spriteInfo = {
 --    { 'f1',   0,   0 },
 --    { 'f2',  32,   0 },
@@ -49,7 +51,7 @@ player = {
     grid_y = 256,
     act_x = 200,
     act_y = 200,
-    speed = 10
+    speed = 7
     }
 
     fireball = love.graphics.newImage('/imgs/effects/explosion.png')
