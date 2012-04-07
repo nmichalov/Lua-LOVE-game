@@ -45,15 +45,17 @@ function keypress()
     if love.keyboard.isDown(" ") then
         local fx, fy = player.act_x, player.act_y
         if player.img == player.imgU then
-            fy = fy - 64
-            fx = fx - 32
+            fy = fy - 160 
+            fx = fx -  16 
         elseif player.img == player.imgL then
             fx = fx - 128 
+            fy = fy -  64 
         elseif player.img == player.imgR then
-            fx = fx + 64
+            fx = fx + 128
+            fy = fy -  64
         elseif player.img == player.imgD then
-            fy = fy + 64
-            fx = fx - 32
+            fy = fy +  64 
+            fx = fx -  16
         end
         love.graphics.draw(fireball, fx, fy, 1, 1)
     end
