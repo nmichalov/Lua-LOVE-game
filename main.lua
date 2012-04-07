@@ -7,7 +7,8 @@ function love.load()
     --loadMap('/maps/countryArena.lua')
     --loadMap('/maps/riverMap.lua')
     loadMap('/maps/inn.lua')
-    loadChar('/characters/player.lua')
+    --loadChar('/characters/doc.lua')
+    loadChar('/characters/guy.lua')
 end
 
 function love.update(dt)
@@ -17,7 +18,7 @@ end
 
 function love.draw()
     mapTable = drawMap()
-    love.graphics.draw(player.img, player.act_x, player.act_y, 2, 2)
+    love.graphics.draw(player.img, player.act_x, player.act_y, 0, 1, 1, 32, 64)
     keypress()
 end
 
