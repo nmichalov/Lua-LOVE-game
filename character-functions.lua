@@ -51,7 +51,7 @@ end
 
 
 function testMap(x,y)
-    spot = mapTable[(player.grid_x / 32)+ x][(player.grid_y / 32) + y]
+    local spot = mapTable[(player.grid_x / 32)+ x][(player.grid_y / 32) + y]
     if spot == '#' or spot == '^' then
         return false
     end
