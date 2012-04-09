@@ -23,6 +23,7 @@
 
 player = {
     img  = love.graphics.newImage('/imgs/guy/guyDown1.png'),
+    imgMove = love.graphics.newImage('/imgs/guy/guyClear.png'),
     imgD = love.graphics.newImage('/imgs/guy/guyDown1.png'),
     --  f2 = iDir +
     --  f3 = iDir +
@@ -51,7 +52,7 @@ player = {
     grid_y = 256,
     act_x = 200,
     act_y = 200,
-    speed = 7
+    speed = 1
     }
-
+ 
     fireball = love.graphics.newImage('/imgs/effects/explosion.png')

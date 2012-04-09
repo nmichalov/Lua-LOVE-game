@@ -42,4 +42,10 @@ local entities = {
     {'barrel', 10, 10 }
 }
 
-newMap(32,32,'/imgs/maps/resto.png', tileString, quadInfo, entityInfo, entities)
+local solidSpaces = {
+    '#',
+}
+    
+
+
+newMap(32,32,'/imgs/maps/resto.png', tileString, quadInfo, entityInfo, entities, solidSpaces)

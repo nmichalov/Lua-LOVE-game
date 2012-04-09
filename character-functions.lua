@@ -1,4 +1,4 @@
-local tileW, tileH, tileSet, quads, entityInfo, entities
+local tileW, tileH, tileSet, quads, entityInfo, entitie
 function loadChar(path)
     love.filesystem.load(path)()
 end
@@ -21,27 +21,35 @@ function newChar(tileWidth, tileHeight, tileSetPath, entInfo)
 end
 
 function keypress()
+    
     if love.keyboard.isDown("down") then
-        player.img = player.imgD
+        animP = animD
+        --temp = player.imgR
         if testMap(0, 1) then
             player.grid_y = player.grid_y + 32 
         end
     elseif love.keyboard.isDown("up") then
-        player.img = player.imgU
+        animP = animU
+        --temp = player.imgR
         if testMap(0, -1) then
             player.grid_y = player.grid_y - 32
         end
     elseif love.keyboard.isDown("left") then
-        player.img = player.imgL
+        animP = animL
+        --temp = player.imgR
         if testMap(-1, 0) then
             player.grid_x = player.grid_x - 32
         end
     elseif love.keyboard.isDown("right") then
-        player.img = player.imgR
+        animP = animR
+        --temp = player.imgR
         if testMap(1, 0) then
             player.grid_x = player.grid_x + 32
         end
     end
+    player.img = player.imgMove
+    animP:draw(player.act_x - 32, player.act_y - 64)
+    --player.img = temp
     if love.keyboard.isDown(" ") then
         local fx, fy = player.act_x, player.act_y
         if player.img == player.imgU then

@@ -1,16 +1,17 @@
-local tileW, tileH, tileSet, quads, tileTable, entityInfo, entities
+local tileW, tileH, tileSet, quads, tileTable, entityInfo, entities, solidSpaces
 
 function loadMap(path)
     love.filesystem.load(path)()
 end
 
 
-function newMap(tileWidth, tileHeight, tileSetPath, tileString, quadInfo, entInfo, entList)
+function newMap(tileWidth, tileHeight, tileSetPath, tileString, quadInfo, entInfo, entList, solidTiles)
     tileW = tileWidth
     tileH = tileHeight
     tileSet = love.graphics.newImage(tileSetPath)
     entities = entList
     entityInfo = entInfo
+    solidSpaces = solidTiles
 
     local tileSetW, tileSetH = tileSet:getWidth(), tileSet:getHeight()
 
@@ -60,5 +61,5 @@ function drawMap()
         local name, x, y = entity[1], map2world(entity[2], entity[3])
         love.graphics.drawq(tileSet, quads[name], x, y)
     end
-    return tileTable
+    return tileTable, solidSpaces
 end
